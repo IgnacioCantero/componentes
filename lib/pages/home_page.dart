@@ -1,7 +1,7 @@
 //1º - Importar material:
 import 'package:flutter/material.dart';
 
-//2º - Crear la página de tipo 'stless'(no tiene que cambiar) o 'stfull'(tiene que cambiar):
+//2º - Crear la página de tipo 'stless'(NO tiene que cambiar) o 'stfull'(tiene que cambiar):
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -18,7 +18,12 @@ class HomePage extends StatelessWidget {
         'title': 'Avatares',
         'icon': const Icon(Icons.account_circle_outlined),
         'ruta': 'avatar'
-      }
+      },
+      {
+        'title': 'Cards',
+        'icon': const Icon(Icons.format_align_justify_rounded),
+        'ruta': 'card'
+      },
     ];
     
     return Scaffold(

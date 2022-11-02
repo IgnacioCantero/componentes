@@ -27,12 +27,21 @@ class AvatarPage extends StatelessWidget {
                 //Abrir el menú de configuración de la cuenta
               },
               child: const CircleAvatar(
-                backgroundColor: Colors.indigo,
+                backgroundColor: Colors.deepPurpleAccent,
                 child: Text('NC'),
               ),
             ),
           )
         ],
+      ),
+      body: const Center(
+        //FadeInImage -> hace una animación de fundido y nos deja poner un widget de tipo placeholder
+        child: FadeInImage(
+          image: NetworkImage('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/matt-schulze-chad-lindberg-michelle-rodriguez-vin-diesel-news-photo-1624538754.jpg?crop=1.00xw:0.675xh;0,0.229xh&resize=640:*'),
+          fadeInDuration: Duration(seconds: 2),
+          fadeInCurve: Curves.fastLinearToSlowEaseIn,
+          placeholder: AssetImage('assets/carga.gif'),
+        ),
       ),
     );
   }
