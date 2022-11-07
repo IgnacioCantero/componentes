@@ -31,7 +31,7 @@ class CardPage extends StatelessWidget {
     );
   }
 
-  //Funciones:
+  //FUNCIONES:
   Widget _cardTipoUno() {
     return Card(
       margin: const EdgeInsets.all(20),

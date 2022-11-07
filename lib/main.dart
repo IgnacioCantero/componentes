@@ -2,7 +2,9 @@ import 'package:componentes/pages/alert_page.dart';
 import 'package:componentes/pages/avatar_page.dart';
 import 'package:componentes/pages/cards_page.dart';
 import 'package:componentes/pages/home_page.dart';
+import 'package:componentes/pages/inputs_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner:false,
       title: 'Flutter Demo',
+      //Ajustar la localización (especificamos dónde se tiene que propagar el localization):
+      localizationsDelegates: const [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -27,7 +35,8 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => const HomePage(),
         'alert': (BuildContext context) => const AlertPage(),
         'avatar': (BuildContext context) => const AvatarPage(),
-        'card': (BuildContext context) => const CardPage()
+        'card': (BuildContext context) => const CardPage(),
+        'inputs': (BuildContext context) => const InputPage(),
       },
     );
   }

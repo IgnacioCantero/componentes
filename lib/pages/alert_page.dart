@@ -28,7 +28,7 @@ class AlertPage extends StatelessWidget {
     );
   }
 
-  //Funciones:
+  //FUNCIONES:
   _mostrarAlerta(BuildContext context) {
     showDialog(
       //barrierDismissible: false -> para hacer que el usuario no pueda cerrar el Alert tocando fuera:

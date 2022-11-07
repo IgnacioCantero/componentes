@@ -7,7 +7,7 @@ class AvatarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Avatares'),
+        title: const Text('Avatares'),
         actions: [
           Container(
             padding: const EdgeInsets.all(5),

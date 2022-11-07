@@ -24,6 +24,11 @@ class HomePage extends StatelessWidget {
         'icon': const Icon(Icons.format_align_justify_rounded),
         'ruta': 'card'
       },
+      {
+        'title': 'Inputs',
+        'icon': const Icon(Icons.account_box),
+        'ruta': 'inputs'
+      },
     ];
     
     return Scaffold(
