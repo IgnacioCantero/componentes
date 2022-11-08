@@ -29,6 +29,11 @@ class HomePage extends StatelessWidget {
         'icon': const Icon(Icons.account_box),
         'ruta': 'inputs'
       },
+      {
+        'title': 'Personajes Rick&Morty',
+        'icon': const Icon(Icons.accessibility),
+        'ruta': 'personajes'
+      },
     ];
     
     return Scaffold(

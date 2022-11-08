@@ -11,9 +11,19 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   //VARIABLES (hay que inicializarlas):
+    //Nombre:
   String nombre = '';
+    //Password:
   bool _ojoPassword = true;
+    //Calendario:
   TextEditingController _inputDateController = new TextEditingController();
+    //Lista:
+  List<String> _cosas = ['cosa1', 'cosa2', 'cosa3', 'cosa4', 'cosa5'];
+  String _opcionSeleccionada = 'cosa1'; //Si no se quiere seleccionar una opción por defecto también serviría: "String _opcionSeleccionada = 'Seleccione un opción';"
+    //CheckBox:
+  bool isChecked = false;
+    //RadioButtons:
+  String animal = 'perro';
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +42,12 @@ class _InputPageState extends State<InputPage> {
           _passwordInput(),
           const SizedBox(height: 20),
           _datePickerInput(),
+          const SizedBox(height: 20),
+          _opcionesList(),
+          const SizedBox(height: 20),
+          _checkBox(),
+          const SizedBox(height: 20),
+          _radioButtons()
         ],
       ),
     );
@@ -57,7 +73,7 @@ class _InputPageState extends State<InputPage> {
         //->contador de caracteres escritos:
         counterText: nombre.length.toString() + '/20',
         //->estilo del contador:
-        counterStyle: nombre.length >= 20 ? TextStyle(color: Colors.red, fontSize: 14) : TextStyle(color: Colors.blue),
+        counterStyle: nombre.length >= 20 ? const TextStyle(color: Colors.red, fontSize: 14) : const TextStyle(color: Colors.blue),
         //->pista para el user (como el placeholder, pero cuando haga click en el input):
         hintText: 'Escriba su nombre',
         //->nombre del input:
@@ -65,7 +81,7 @@ class _InputPageState extends State<InputPage> {
         //->pista extra para el user (se indica debajo del input y no se borra al escribir en él):
         helperText: 'Únicamente el nombre',
         //->icono:
-        icon: Icon(Icons.account_box),
+        icon: const Icon(Icons.account_box),
       ),
       //Guardar lo que tengamos en el input:
       onChanged: (value) {
@@ -171,5 +187,90 @@ class _InputPageState extends State<InputPage> {
       //Reiniciar la app
       //Establecer los idiomas (localizaciones) soportados en el 'DateTime?'
     }
+  }
+
+  Widget _opcionesList() {
+    return DropdownButton(
+      value: _opcionSeleccionada,
+      //items -> elementos de la lista desplegable -> crearlos en un método aparte:
+      items: getOpciones(),
+      //onChanged -> manejar la lógica cuando el user seleccione uno de los elementos de la lista:
+      onChanged: (value) {
+        setState(() {
+          _opcionSeleccionada = value.toString();
+        });
+      }
+    );
+  }
+  List<DropdownMenuItem<String>> getOpciones() {
+    //En base a la lista de opciones, devolver una lista de DropdownMenuItem (los elementos de la lista desplegable):
+    List<DropdownMenuItem<String>> lista = [];
+    _cosas.forEach((cosa) {
+      lista.add(
+        DropdownMenuItem(
+          value: cosa,
+          child: Text(cosa),
+        ),
+      );
+    });
+    return lista;
+  }
+
+  Widget _checkBox() {
+    return ListTile(
+      title: const Text('Acepto los términos'),
+      trailing: Checkbox(
+        value: isChecked,
+        onChanged: (bool? value) {
+          setState(() {
+            isChecked = value!;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _radioButtons() {
+    return Column(
+      children: [
+        const Text('Seleccione su animal de preferencia:'),
+        ListTile(
+          title: const Text('gato'),
+          leading: Radio<String>(
+            value: 'gato',
+            groupValue: animal,
+            onChanged: (String? value) {
+              setState(() {
+                animal = value!;
+              });
+            },
+          ),
+        ),
+        ListTile(
+          title: const Text('perro'),
+          leading: Radio<String>(
+            value: 'perro',
+            groupValue: animal,
+            onChanged: (String? value) {
+              setState(() {
+                animal = value!;
+              });
+            },
+          ),
+        ),
+        ListTile(
+          title: const Text('tortuga'),
+          leading: Radio<String>(
+            value: 'tortuga',
+            groupValue: animal,
+            onChanged: (String? value) {
+              setState(() {
+                animal = value!;
+              });
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
