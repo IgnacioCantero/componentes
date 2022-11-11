@@ -1,13 +1,13 @@
-//1º - Importar material:
+//todo: 1º - Importar material:
 import 'package:flutter/material.dart';
 
-//2º - Crear la página de tipo 'stless'(NO tiene que cambiar) o 'stfull'(tiene que cambiar):
+//todo: 2º - Crear la página de tipo 'stless'(NO tiene que cambiar) o 'stfull'(tiene que cambiar):
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Creación de variables:
+    ///VARIABLES -> inicializarlas:
     final List<Map<String, dynamic>> componentes = [
       {
         'title': 'Alertas',
@@ -26,13 +26,28 @@ class HomePage extends StatelessWidget {
       },
       {
         'title': 'Inputs',
-        'icon': const Icon(Icons.account_box),
+        'icon': const Icon(Icons.check_box_outlined),
         'ruta': 'inputs'
       },
       {
         'title': 'Personajes Rick&Morty',
-        'icon': const Icon(Icons.accessibility),
+        'icon': const Icon(Icons.person_add_alt),
         'ruta': 'personajes'
+      },
+      {
+        'title': 'Personaje Rick&Morty',
+        'icon': const Icon(Icons.person_outline),
+        'ruta': 'personaje'
+      },
+      {
+        'title': 'Pasar info entre páginas',
+        'icon': const Icon(Icons.info_outline),
+        'ruta': 'page1'
+      },
+      {
+        'title': 'Lista de la compra',
+        'icon': const Icon(Icons.shopping_cart_outlined),
+        'ruta': 'listacompra'
       },
     ];
     
@@ -41,17 +56,16 @@ class HomePage extends StatelessWidget {
         title: const Text('Componentes'),
       ),
       body: ListView.builder(
-        //ListView.builder -> necesita saber el tamaño de la lista:
+        //todo: ListView.builder -> necesita saber el tamaño de la lista:
         itemCount: componentes.length,
-        //context -> hace referencia al stateless o al stateful widget (al widget
-        // padre donde se está pintando)
+        //todo: context -> hace referencia al stateless o al stateful widget (al widget padre donde se está pintando)
         itemBuilder: (BuildContext context, int index) {
-          //Card -> poner bordes al ListTile
+          //todo: Card -> poner bordes al ListTile
           return Card(
             margin: const EdgeInsets.all(7),
             child: ListTile(
               onTap: () {
-                //Navegación entre pantallas:
+                //todo: Navegación entre pantallas:
                 Navigator.pushNamed(context, componentes[index]['ruta']);
               },
               title: Text(componentes[index]['title']),
@@ -64,16 +78,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

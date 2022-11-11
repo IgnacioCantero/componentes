@@ -9,9 +9,9 @@ class CardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Card page'),
       ),
-      //ListView -> tiene scroll
-      //Column -> NO tiene scroll
-      //SingleChildScrollView -> fuerza a tener scroll
+      //todo: ListView -> tiene scroll
+      //todo: Column -> NO tiene scroll
+      //todo: SingleChildScrollView -> fuerza a tener scroll
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -59,11 +59,11 @@ class CardPage extends StatelessWidget {
     return Card(
       color: Colors.orange,
       margin: const EdgeInsets.all(20),
-      //clipBehavior: Clip.antiAlias -> para redondear las esquinas en la imágen
+      //todo: clipBehavior: Clip.antiAlias -> para redondear las esquinas en la imágen
       clipBehavior: Clip.antiAlias,
-      //Para cambiar la pronunciación del borde de las esquinas:
+      //todo: Para cambiar la pronunciación del borde de las esquinas:
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      //elevation -> para aumentar la elevación de la card (y por tanto, la sombra)
+      //todo: elevation -> para aumentar la elevación de la card (y por tanto, la sombra)
       elevation: 30,
       shadowColor: Colors.purpleAccent,
       child: Column(

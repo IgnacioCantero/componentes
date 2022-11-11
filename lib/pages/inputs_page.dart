@@ -10,19 +10,19 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  //VARIABLES (hay que inicializarlas):
-    //Nombre:
+  ///VARIABLES -> inicializarlas:
+    ///Nombre:
   String nombre = '';
-    //Password:
+    ///Password:
   bool _ojoPassword = true;
-    //Calendario:
+    ///Calendario:
   TextEditingController _inputDateController = new TextEditingController();
-    //Lista:
+    ///Lista:
   List<String> _cosas = ['cosa1', 'cosa2', 'cosa3', 'cosa4', 'cosa5'];
-  String _opcionSeleccionada = 'cosa1'; //Si no se quiere seleccionar una opción por defecto también serviría: "String _opcionSeleccionada = 'Seleccione un opción';"
-    //CheckBox:
+  String _opcionSeleccionada = 'cosa1'; //todo: Si no se quiere seleccionar una opción por defecto también serviría: "String _opcionSeleccionada = 'Seleccione un opción';"
+    ///CheckBox:
   bool isChecked = false;
-    //RadioButtons:
+    ///RadioButtons:
   String animal = 'perro';
 
   @override
@@ -53,39 +53,39 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  //FUNCIONES:
+  ///FUNCIONES:
   Widget _nombreInput() {
     return TextField(
-      //Control de la capitalización (Mayúsculas/minúsculas):
+      //todo: Control de la capitalización (Mayúsculas/minúsculas):
       textCapitalization: TextCapitalization.sentences,
-      //Estilos:
+      //todo: Estilos:
       decoration: InputDecoration(
-        //->borde:
+        //todo: ->borde:
         border: const OutlineInputBorder(
           borderSide: BorderSide(width: 15,  color: Colors.green),  //No funciona y no sabemos por qué
           borderRadius: BorderRadius.all(Radius.circular(20))
         ),
-        //->cambiar propiedades borde cuando el user haga click en el input:
+        //todo: ->cambiar propiedades borde cuando el user haga click en el input:
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(width: 5, color: Colors.amber),
             borderRadius: BorderRadius.all(Radius.circular(20))
         ),
-        //->contador de caracteres escritos:
+        //todo: ->contador de caracteres escritos:
         counterText: nombre.length.toString() + '/20',
-        //->estilo del contador:
+        //todo: ->estilo del contador:
         counterStyle: nombre.length >= 20 ? const TextStyle(color: Colors.red, fontSize: 14) : const TextStyle(color: Colors.blue),
-        //->pista para el user (como el placeholder, pero cuando haga click en el input):
+        //todo: ->pista para el user (como el placeholder, pero cuando haga click en el input):
         hintText: 'Escriba su nombre',
-        //->nombre del input:
-        label: Text('Nombre'),
-        //->pista extra para el user (se indica debajo del input y no se borra al escribir en él):
+        //todo: ->nombre del input:
+        label: const Text('Nombre'),
+        //todo: ->pista extra para el user (se indica debajo del input y no se borra al escribir en él):
         helperText: 'Únicamente el nombre',
-        //->icono:
+        //todo: ->icono:
         icon: const Icon(Icons.account_box),
       ),
-      //Guardar lo que tengamos en el input:
+      //todo: Guardar lo que tengamos en el input:
       onChanged: (value) {
-        //setState()->actualiza la vista
+        //todo: setState()->actualiza la vista
         setState(() {
           nombre = value;
         });
@@ -98,7 +98,7 @@ class _InputPageState extends State<InputPage> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderSide: BorderSide(width: 15,  color: Colors.green),  //NO FUNCIONA Y NO SABEMOS POR QUÉ
+          borderSide: BorderSide(width: 15,  color: Colors.green),  ///NO FUNCIONA Y NO SABEMOS POR QUÉ
           borderRadius: BorderRadius.all(Radius.circular(20))
         ),
         hintText: 'Escribe tu email',
@@ -113,7 +113,7 @@ class _InputPageState extends State<InputPage> {
       obscureText: _ojoPassword,
       decoration: InputDecoration(
         border: const OutlineInputBorder(
-            borderSide: BorderSide(width: 15,  color: Colors.green),  //NO FUNCIONA Y NO SABEMOS POR QUÉ
+            borderSide: BorderSide(width: 15,  color: Colors.green),  ///NO FUNCIONA Y NO SABEMOS POR QUÉ
             borderRadius: BorderRadius.all(Radius.circular(20))
         ),
         hintText: 'Escribe una constraseña',
@@ -132,69 +132,69 @@ class _InputPageState extends State<InputPage> {
   }
 
   Widget _datePickerInput() {
-    //1º -> Crear el input:
+    //todo: 1º -> Crear el input:
     return TextField(
       controller: _inputDateController,
       decoration: const InputDecoration(
           border: OutlineInputBorder(
-              borderSide: BorderSide(width: 15,  color: Colors.green),  //NO FUNCIONA Y NO SABEMOS POR QUÉ
+              borderSide: BorderSide(width: 15,  color: Colors.green),  ///NO FUNCIONA Y NO SABEMOS POR QUÉ
               borderRadius: BorderRadius.all(Radius.circular(20))
           ),
           hintText: 'Escoja su fecha de nacimiento',
           label: Text('Fecha de nacimiento'),
           icon: Icon(Icons.date_range)
       ),
-      //Mostrar el calendario al tocar el input:
+      //todo: Mostrar el calendario al tocar el input:
       onTap: () {
-        //Quitar el focus del input para que el calendario no desaparezca:
+        //todo: Quitar el focus del input para que el calendario no desaparezca:
         FocusScope.of(context).requestFocus(new FocusNode());
-        //Crear método que se encarga de pintar el calendario:
+        //todo: Crear método que se encarga de pintar el calendario:
         _selectDate();
       },
     );
   }
   void _selectDate() async {
-    //Crear variable para guardar la fecha que seleccione el user
-    //Esta respuesta es en el futuro ya que se queda esperando a tener una selección por parte del user, por tanto, es una respuesta asíncrona -> async
-    //await -> para indicar que debe esperar a la respuesta del user
-    //Cuando llamemos a las Apis serán llamadas asincronas (async) de las respuestas (await)
-    //DateTime? -> el interrogante es porque puede ser null si el user no indica una fecha
+    //todo: Crear variable para guardar la fecha que seleccione el user
+    //todo: Esta respuesta es en el futuro ya que se queda esperando a tener una selección por parte del user, por tanto, es una respuesta asíncrona -> async
+    //todo: await -> para indicar que debe esperar a la respuesta del user
+    //todo: Cuando llamemos a las Apis serán llamadas asíncronas (async) de las respuestas (await)
+    //todo: DateTime? -> el interrogante es porque puede ser null si el user no indica una fecha
     DateTime? fechaSeleccionada = await showDatePicker(
         context: context,
-        //initialDate -> fecha preseleccionada al abrir el DatePicker:
+        //todo: initialDate -> fecha preseleccionada al abrir el DatePicker:
         initialDate: new DateTime.now(),
-        //firstDate -> fecha mínima del calendario:
+        //todo: firstDate -> fecha mínima del calendario:
         firstDate: new DateTime(1920),
-        //lastDate -> fecha tope del calendario:
+        //todo: lastDate -> fecha tope del calendario:
         lastDate: new DateTime(2056),
-        //Establecer los idiomas (localizaciones) soportados:
-        //https://es.wikipedia.org/wiki/ISO_639-1
+        //todo: Establecer los idiomas (localizaciones) soportados:
+        //todo: https://es.wikipedia.org/wiki/ISO_639-1
         locale: const Locale('es')
     );
-    //Una vez recibida la respuesta, continuará la ejecución del método async
+    //todo: Una vez recibida la respuesta, continuará la ejecución del método async
     if(fechaSeleccionada != null) {
-      //El controller debe pintar la fecha parseada a String, para lo que necesitamos una librería intl que sirve entre otras cosas para parsear o formatear fechas. Para instalarla:
-      //Terminal: flutter pub add intl ↵
-      //Reiniciar la app
+      //todo: El controller debe pintar la fecha parseada a String, para lo que necesitamos una librería intl que sirve entre otras cosas para parsear o formatear fechas. Para instalarla:
+      //todo: Terminal: flutter pub add intl ↵
+      //todo: Reiniciar la app
       setState(() {
         _inputDateController.text = DateFormat('dd-MM-yyyy').format(fechaSeleccionada);
       });
-      //También se tiene que instalar otra librería para el idioma (español)
-      //Escribir en el archivo pubspec.yaml:
+      //todo: También se tiene que instalar otra librería para el idioma (español)
+      //todo: Escribir en el archivo pubspec.yaml:
       //flutter_localizations:
       //     sdk: flutter
-      //Clickar en Pub get
-      //Reiniciar la app
-      //Establecer los idiomas (localizaciones) soportados en el 'DateTime?'
+      //todo: Clickar en Pub get
+      //todo: Reiniciar la app
+      //todo: Establecer los idiomas (localizaciones) soportados en el 'DateTime?'
     }
   }
 
   Widget _opcionesList() {
     return DropdownButton(
       value: _opcionSeleccionada,
-      //items -> elementos de la lista desplegable -> crearlos en un método aparte:
+      //todo: items -> elementos de la lista desplegable -> crearlos en un método aparte:
       items: getOpciones(),
-      //onChanged -> manejar la lógica cuando el user seleccione uno de los elementos de la lista:
+      //todo: onChanged -> manejar la lógica cuando el user seleccione uno de los elementos de la lista:
       onChanged: (value) {
         setState(() {
           _opcionSeleccionada = value.toString();
@@ -203,7 +203,7 @@ class _InputPageState extends State<InputPage> {
     );
   }
   List<DropdownMenuItem<String>> getOpciones() {
-    //En base a la lista de opciones, devolver una lista de DropdownMenuItem (los elementos de la lista desplegable):
+    //todo: En base a la lista de opciones, devolver una lista de DropdownMenuItem (los elementos de la lista desplegable):
     List<DropdownMenuItem<String>> lista = [];
     _cosas.forEach((cosa) {
       lista.add(

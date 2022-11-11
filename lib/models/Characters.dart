@@ -164,5 +164,4 @@ class Origin {
     map['url'] = _url;
     return map;
   }
-
 }
