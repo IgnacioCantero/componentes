@@ -40,7 +40,7 @@ class Character {
 }
 
 //Constructor nombrado para pasar de Json a Objeto:
-  Character.fromJson(dynamic json) {
+  Character.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
     _name = json['name'];
     _status = json['status'];

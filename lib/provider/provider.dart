@@ -14,7 +14,8 @@ class HttpService {
     Response res = await get(Uri.parse(url + '/1'));
     //todo: Asegurar que la respuesta es correcta -> statuscode = 200
     if(res.statusCode == 200) {
-      return Character.fromJson(res.body);
+      //todo: fromJson -> convertir el Json a Map:
+      return Character.fromJson(json.decode(res.body));
     } else {
       //todo: Ha habido algún fallo:
       throw Exception('Fallo');
